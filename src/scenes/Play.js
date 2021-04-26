@@ -12,6 +12,7 @@ class Play extends Phaser.Scene {
         this.load.image('frog1', './assets/frog.png');
         this.load.image('frog2', './assets/frogtongue.png');
         this.load.image('flower', './assets/Flower obstacle.png');
+        this.load.image('fly', './assets/fly.png');
     }
 
     create() {
@@ -67,5 +68,6 @@ class Play extends Phaser.Scene {
         this.water1.tilePositionX +=4;
         this.floor.tilePositionX +=1;
         this.flower.update();
+        this.fly.update();
     }
 }
