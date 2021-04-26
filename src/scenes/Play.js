@@ -15,6 +15,8 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        // add sky bg
+        this.add.rectangle(0, 0, game.config.width, game.config.height, 0x00DDFF).setOrigin(0, 0);
         // add water1 sprite
         this.water1 = this.add.tileSprite(
             0,
