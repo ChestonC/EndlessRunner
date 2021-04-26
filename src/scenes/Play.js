@@ -11,6 +11,7 @@ class Play extends Phaser.Scene {
         this.load.image('water3', './assets/water3.png');
         this.load.image('frog1', './assets/frog.png');
         this.load.image('frog2', './assets/frogtongue.png');
+        this.load.image('flower', './assets/Flower obstacle.png');
     }
 
     create() {
@@ -40,11 +41,21 @@ class Play extends Phaser.Scene {
             'frog1',
             'frog2',
         )
+
+        // add flower obstacle
+        this.flower= new Flower(
+            this,
+            borderUISize+borderPadding+ 100,
+            game.config.height - borderUISize*2,
+            'flower',
+            0, 30
+        );
        
     }
 
     update() {
         this.water1.tilePositionX +=4;
         this.floor.tilePositionX +=1;
+        this.flower.update();
     }
 }
