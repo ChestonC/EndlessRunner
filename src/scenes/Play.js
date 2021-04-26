@@ -52,6 +52,14 @@ class Play extends Phaser.Scene {
             'flower',
             0, 30
         );
+
+        this.fly= new Fly(
+            this,
+            borderUISize+borderPadding+ 700,
+            game.config.height - borderUISize*2,
+            'fly',
+            0, 30
+        );
        
     }
 
