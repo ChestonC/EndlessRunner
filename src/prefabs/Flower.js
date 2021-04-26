@@ -3,7 +3,7 @@ class Flower extends Phaser.GameObjects.Sprite{
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         this.points= pointValue;
-        this.moveSpeed= 4;
+        this.moveSpeed= 2;
     }
 
     update(){

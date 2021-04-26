@@ -45,7 +45,7 @@ class Play extends Phaser.Scene {
         // add flower obstacle
         this.flower= new Flower(
             this,
-            borderUISize+borderPadding+ 100,
+            borderUISize+borderPadding+ 700,
             game.config.height - borderUISize*2,
             'flower',
             0, 30
