@@ -22,4 +22,17 @@ class Menu extends Phaser.Scene {
 
         this.scene.start('playScene');
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+    update() {
+        game.settings = {
+            flySpeed: 3,
+            gameTimer: 60000,    
+          }
+    }
+=======
+>>>>>>> 8427f31fbb094c76c80916f768e2cf888c4e4001
+>>>>>>> Stashed changes
 }
