@@ -9,5 +9,21 @@ class Frog extends Phaser.GameObjects.Sprite {
 
     update() {
 
+        //movement up & down
+        if(!this.tongue){
+            if(keyW.isDown){
+                this.y -= this.moveSpeed;
+            }
+            if(keyS.isDown){
+                this.y += this.moveSpeed;
+            }
+        }
+
+        //firing tongue
+        if(keyJ.isDown){
+            this.tongue = true;
+        }
+
+
     }
 }
