@@ -5,6 +5,7 @@ class Play extends Phaser.Scene {
 
     preload() {
         // load images and sprites
+        this.load.image('floor', './assets/Lilypads.png');
         this.load.image('water1', './assets/water.png');
         this.load.image('water2', './assets/water2.png');
         this.load.image('water3', './assets/water3.png');
@@ -22,6 +23,15 @@ class Play extends Phaser.Scene {
             'water1'
         ).setOrigin(0, 0);
 
+        //add floor
+        this.floor = this.add.tileSprite(
+            borderUISize+ borderPadding-40,
+            game.config.height - borderUISize*2+ 12,
+            616,
+            480,
+            'floor'
+        ).setOrigin(0,0)
+
         // add player frog
         this.frog = new Frog(
             this,
@@ -30,9 +40,11 @@ class Play extends Phaser.Scene {
             'frog1',
             'frog2',
         )
+       
     }
 
     update() {
         this.water1.tilePositionX +=4;
+        this.floor.tilePositionX +=1;
     }
 }
