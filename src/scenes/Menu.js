@@ -18,7 +18,7 @@ class Menu extends Phaser.Scene {
         }
 
         // PLACEHOLDER text
-        this.add.text(borderUISize + borderPadding, borderUISize + borderPadding, 'ENDLESS RUNNER', menuConfig);
+        this.add.text(borderUISize + borderPadding, borderUISize + borderPadding, 'Pond Rush', menuConfig);
 
         this.scene.start('playScene');
     }
