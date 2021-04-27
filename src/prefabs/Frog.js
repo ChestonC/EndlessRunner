@@ -4,19 +4,28 @@ class Frog extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture1, texture2, frame);
         scene.add.existing(this);
         
+        this.jumping = false;
         this.tongue = false;
+        this.moveSpeed = 4;
     }
 
     update() {
 
-        //movement up & down
-        if(!this.tongue){
-            if(keyW.isDown){
-                this.y -= this.moveSpeed;
+        // jumping
+        if(!this.jumping) {
+            if(Phaser.Input.Keyboard.JustDown(keyW)) {
+                this.jumping = true;
             }
-            if(keyS.isDown){
-                this.y += this.moveSpeed;
+        }
+
+        if(this.jumping) {
+            this.moveSpeed -= this.y/6000
+            if(this.y >= game.config.height - borderUISize*2) {
+                this.jumping = false;
+                this.moveSpeed = 4;
+                this.y = (game.config.height - borderUISize*2)+3;
             }
+            this.y -= this.moveSpeed;
         }
 
         //firing tongue

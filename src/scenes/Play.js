@@ -41,7 +41,7 @@ class Play extends Phaser.Scene {
         this.frog = new Frog(
             this,
             borderUISize+borderPadding,
-            game.config.height - borderUISize*2,
+            (game.config.height - borderUISize*2)-1,
             'frog1',
             'frog2',
         )
@@ -66,7 +66,6 @@ class Play extends Phaser.Scene {
         // define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
     }
