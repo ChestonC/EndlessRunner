@@ -77,4 +77,15 @@ class Play extends Phaser.Scene {
         this.fly.update();
         this.frog.update();
     }
+
+    checkCollision(frog, fly) {
+        if (frog.x < fly.x + fly.width && 
+            frog.x + frog.width > fly.x && 
+            frog.y < fly.y + fly.height &&
+            frog.height + frog.y > fly.y) {
+                return true;
+        } else {
+            return false;
+        }
+    }
 }
