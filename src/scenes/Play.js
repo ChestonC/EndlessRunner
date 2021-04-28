@@ -63,6 +63,9 @@ class Play extends Phaser.Scene {
             0, 30
         );
 
+        //added respawn timer
+        this.respawn=  this.time.addEvent({delay: 15000, callback: this.respawnflower, callbackScope: this, loop: true});
+
         // define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -96,6 +99,8 @@ class Play extends Phaser.Scene {
             return false;
         }
     }
+
+    //add collision with flower
     checkCollision(frog, flower) {
         if (frog.x < flower.x + flower.width && 
             frog.x + frog.width > flower.x && 
@@ -105,5 +110,18 @@ class Play extends Phaser.Scene {
         } else {
             return false;
         }
+    }
+
+    //add respawn function for flower
+
+    respawnflower() {
+        this.flower= new Flower(
+            this,
+            borderUISize+borderPadding+ 700,
+            game.config.height - borderUISize*2,
+            'flower',
+            0, 30
+        );
+        console.log('spawning flower');
     }
 }
