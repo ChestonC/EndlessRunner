@@ -22,4 +22,23 @@ class Menu extends Phaser.Scene {
 
         this.scene.start('playScene');
     }
+
+    update(){
+
+        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+            // easy mode 60 second
+            game.settings = {
+              highScore: 0
+            }
+        }
+
+
+
+
+
+
+
+
+
+    }
 }

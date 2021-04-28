@@ -60,11 +60,11 @@ class Play extends Phaser.Scene {
         //initialize score
         this.frogScore = 0;
 
-         // display score config
-         let scoreConfig = {
+    // display score config
+    let scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
+            backgroundColor: '#83D6FF',
             color: '#843605',
             align: 'right',
             padding: {
@@ -72,9 +72,29 @@ class Play extends Phaser.Scene {
                 bottom: 5,
             },
             fixedWidth: 100
-        }
+    }
         //display score
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.frogScore, scoreConfig);
+
+    //display highscore config
+    let highscoreConfig = {
+        fontFamily: 'Courier',
+        fontSize: '28px',
+        backgroundColor: '#83D6FF',
+        color: '#843605',
+        align: 'right',
+        padding: {
+            top: 5,
+            bottom: 5,
+        },
+        fixedWidth: 250
+    }
+
+        this.highScore = 0;
+
+        //display high score
+        //console.log(game.settings.highScore);
+        this.scoreRight = this.add.text(350, borderUISize + borderPadding*2, 'High Score: ' + this.highScore, highscoreConfig);
 
 
         // define keys
