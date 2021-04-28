@@ -80,6 +80,10 @@ class Play extends Phaser.Scene {
         if(this.checkCollision(this.frog, this.fly)) {
             this.fly.reset();  
         }
+
+        if(this.checkCollision(this.frog, this.flower)){
+            this.flower.destroy();
+        }
     }
 
     checkCollision(frog, fly) {
@@ -87,6 +91,16 @@ class Play extends Phaser.Scene {
             frog.x + frog.width > fly.x && 
             frog.y < fly.y + fly.height &&
             frog.height + frog.y > fly.y) {
+                return true;
+        } else {
+            return false;
+        }
+    }
+    checkCollision(frog, flower) {
+        if (frog.x < flower.x + flower.width && 
+            frog.x + frog.width > flower.x && 
+            frog.y < flower.y + flower.height &&
+            frog.height + frog.y > flower.y) {
                 return true;
         } else {
             return false;
