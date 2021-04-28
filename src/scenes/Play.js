@@ -63,8 +63,10 @@ class Play extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
 
+        this.timer= 15000;
+
            //added respawn timer
-           this.respawn=  this.time.addEvent({delay: 15000, callback: this.respawnflower, callbackScope: this, loop: true});
+           this.respawn=  this.time.addEvent({delay: this.timer, callback: this.respawnflower, callbackScope: this, loop: true});
     }
 
     update() {
