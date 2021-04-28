@@ -55,22 +55,16 @@ class Play extends Phaser.Scene {
             0, 30
         );
 
-        this.fly= new Fly(
-            this,
-            borderUISize+borderPadding+ 700,
-            game.config.height - borderUISize*2,
-            'fly',
-            0, 30
-        );
-
-        //added respawn timer
-        this.respawn=  this.time.addEvent({delay: 15000, callback: this.respawnflower, callbackScope: this, loop: true});
-
+        this.fly = new Fly(this, game.config.width, borderUISize*6 + borderPadding*8, 'fly', 0, 10).setOrigin(0,0);
+        
         // define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+
+           //added respawn timer
+           this.respawn=  this.time.addEvent({delay: 15000, callback: this.respawnflower, callbackScope: this, loop: true});
     }
 
     update() {
