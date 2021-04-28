@@ -76,6 +76,10 @@ class Play extends Phaser.Scene {
         this.flower.update();
         this.fly.update();
         this.frog.update();
+
+        if(this.checkCollision(this.frog, this.fly)) {
+            this.fly.reset();  
+        }
     }
 
     checkCollision(frog, fly) {
