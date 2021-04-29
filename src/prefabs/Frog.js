@@ -9,6 +9,11 @@ class Frog extends Phaser.GameObjects.Sprite {
         this.moveSpeed = 4;
     }
 
+    preload() {
+        this.load.image('frog2', './assets/frogtongue.png');
+    }
+
+
     update() {
 
         // jumping
@@ -31,6 +36,7 @@ class Frog extends Phaser.GameObjects.Sprite {
         //firing tongue
         if(keyJ.isDown){
             this.tongue = true;
+            //this.frog.setTexture('frog2');
         }
 
 
