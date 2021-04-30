@@ -18,7 +18,8 @@ class Menu extends Phaser.Scene {
         }
 
 
-        // PLACEHOLDER text
+        // Menu TEXT
+        //need more content, ex: image text color, ext. //Justin
         this.add.text(borderUISize + borderPadding, borderUISize + borderPadding, 'Pond Rush', menuConfig);
 
         this.add.text(borderUISize + borderPadding, borderUISize + borderPadding + 50, 'Press → to Start', menuConfig);
