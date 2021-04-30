@@ -67,11 +67,34 @@ class Play extends Phaser.Scene {
 
         this.fly = new Fly(this, game.config.width, borderUISize*6 + borderPadding*8, 'fly', 0, 10).setOrigin(0,0);
         
+        //Display hunger meter
+        this.startTime = this.time.now;
+        this.hunger = 150;
+        this.add.rectangle(game.config.width/3, game.config.height/3, 206, 26, 0xFFFFFF).setOrigin(0, 0);
+        this.add.rectangle((game.config.width/3)+3, (game.config.height/3)+3, 200, 20, 0x00DDFF).setOrigin(0, 0);
+        this.hungerMeter = this.add.rectangle((game.config.width/3)+3, (game.config.height/3)+3, this.hunger, 20, 0xFF5500).setOrigin(0, 0);
+
         //initialize score
         this.frogScore = 0;
 
-    // display score config
-    let scoreConfig = {
+        // display score config
+        let scoreConfig = {
+                fontFamily: 'Courier',
+                fontSize: '28px',
+                backgroundColor: '#83D6FF',
+                color: '#843605',
+                align: 'right',
+                padding: {
+                    top: 5,
+                    bottom: 5,
+                },
+                fixedWidth: 100
+        }
+        //display score
+        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.frogScore, scoreConfig);
+
+        //display highscore config
+        let highscoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
             backgroundColor: '#83D6FF',
@@ -81,24 +104,8 @@ class Play extends Phaser.Scene {
                 top: 5,
                 bottom: 5,
             },
-            fixedWidth: 100
-    }
-        //display score
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.frogScore, scoreConfig);
-
-    //display highscore config
-    let highscoreConfig = {
-        fontFamily: 'Courier',
-        fontSize: '28px',
-        backgroundColor: '#83D6FF',
-        color: '#843605',
-        align: 'right',
-        padding: {
-            top: 5,
-            bottom: 5,
-        },
-        fixedWidth: 250
-    }
+            fixedWidth: 250
+        }
 
         this.highScore = 0;
 
@@ -120,29 +127,37 @@ class Play extends Phaser.Scene {
 
         this.timer= 15000;
 
-           //added respawn timer
-           this.respawn=  this.time.addEvent({delay: this.timer, callback: this.respawnflower, callbackScope: this, loop: true});
-           this.respawn=  this.time.addEvent({delay: this.timer-5000, callback: this.respawnflower2, callbackScope: this, loop: true});
+        //added respawn timer
+        this.respawn=  this.time.addEvent({delay: this.timer, callback: this.respawnflower, callbackScope: this, loop: true});
+        this.respawn=  this.time.addEvent({delay: this.timer-5000, callback: this.respawnflower2, callbackScope: this, loop: true});
+
+        // game over flag
+        this.gameOver = false;
     }
 
     update() {
-        this.water1.tilePositionX +=4;
-        this.floor.tilePositionX +=1;
-        this.flower.update();
-        this.flower2.update();
-        this.fly.update();
-        this.frog.update();
+        if(!this.gameOver) {
+            this.water1.tilePositionX +=4;
+            this.floor.tilePositionX +=1;
+            this.flower.update();
+            this.flower2.update();
+            this.fly.update();
+            this.frog.update();
 
-        if(this.checkCollision(this.frog, this.fly)) {
-            this.fly.reset();  
-        }
+            if(this.checkCollision(this.frog, this.fly)) {
+                this.fly.reset();
+                this.hunger += 50
+            }
 
-        if(this.checkCollision(this.frog, this.flower)){
-            this.flower.destroy();
-        }
+            if(this.checkCollision(this.frog, this.flower)){
+                this.flower.destroy();
+            }
 
-        if(this.checkCollision(this.frog, this.flower2)){
-            this.flower2.destroy();
+            if(this.checkCollision(this.frog, this.flower2)){
+                this.flower2.destroy();
+            }
+
+            this.updateHunger()
         }
     }
 
@@ -156,8 +171,6 @@ class Play extends Phaser.Scene {
             return false;
         }
     }
-
-    
 
     //add collision with flower
     checkCollision(frog, flower) {
@@ -193,5 +206,17 @@ class Play extends Phaser.Scene {
             0, 30
         );
         console.log('spawning flower2');
+    }
+
+    // update the hunger meter
+    updateHunger() {
+        this.hunger -= 0.1;
+        if (this.hunger >= 200) {
+            this.hunger = 200;
+        }
+        this.hungerMeter.width = this.hunger;
+        if (this.hunger <= 0) {
+            this.gameOver = true;
+        }
     }
 }

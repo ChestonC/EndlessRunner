@@ -38,7 +38,5 @@ class Frog extends Phaser.GameObjects.Sprite {
             this.tongue = true;
             // this.tongue.setTexture('frog2');
         }
-
-
     }
 }
