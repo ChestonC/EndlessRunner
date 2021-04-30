@@ -94,8 +94,13 @@ class Play extends Phaser.Scene {
 
         //display high score
         //console.log(game.settings.highScore);
-        this.scoreRight = this.add.text(350, borderUISize + borderPadding*2, 'High Score: ' + this.highScore, highscoreConfig);
+        this.scoreRight = this.add.text(350, borderUISize + borderPadding*2, 'High Score: ' + game.settings.highScore, highscoreConfig);
 
+         //update high score
+         if(game.settings.highScore<this.frogScore){
+            game.settings.highScore = this.frogScore;
+            this.scoreRight.text = 'High Score: ' + game.settings.highScore;
+        }
 
         // define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -135,6 +140,8 @@ class Play extends Phaser.Scene {
             return false;
         }
     }
+
+    
 
     //add collision with flower
     checkCollision(frog, flower) {
