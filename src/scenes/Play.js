@@ -147,6 +147,7 @@ class Play extends Phaser.Scene {
             if(this.checkCollision(this.frog, this.fly)) {
                 this.fly.reset();
                 this.hunger += 50
+                this.flyEaten(this.fly);
             }
 
             if(this.checkCollision(this.frog, this.flower)){
@@ -174,6 +175,11 @@ class Play extends Phaser.Scene {
         } else {
             return false;
         }
+    }
+
+    flyEaten(fly){
+        this.frogScore += fly.points;
+        this.scoreLeft.text = this.frogScore;
     }
 
     //add collision with flower
