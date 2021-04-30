@@ -17,19 +17,25 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
 
+
         // PLACEHOLDER text
         this.add.text(borderUISize + borderPadding, borderUISize + borderPadding, 'Pond Rush', menuConfig);
 
-        this.scene.start('playScene');
+        this.add.text(borderUISize + borderPadding, borderUISize + borderPadding + 50, 'Press → to Start', menuConfig);
+
+
+        //this.scene.start('playScene');
+
+        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
 
     update(){
 
-        if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-            // easy mode 60 second
+        if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             game.settings = {
               highScore: 0
             }
+            this.scene.start('playScene')
         }
 
 
