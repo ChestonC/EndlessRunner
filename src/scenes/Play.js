@@ -150,11 +150,15 @@ class Play extends Phaser.Scene {
             }
 
             if(this.checkCollision(this.frog, this.flower)){
+                this.flower.reset();
                 this.flower.destroy();
+                this.hunger -= 5;
             }
 
             if(this.checkCollision(this.frog, this.flower2)){
+                this.flower2.reset();
                 this.flower2.destroy();
+                this.hunger -= 5;
             }
 
             this.updateHunger()
