@@ -36,7 +36,7 @@ class Frog extends Phaser.GameObjects.Sprite {
         //firing tongue
         if(keyJ.isDown){
             this.tongue = true;
-            //this.frog.setTexture('frog2');
+            // this.tongue.setTexture('frog2');
         }
 
 

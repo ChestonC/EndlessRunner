@@ -55,6 +55,14 @@ class Play extends Phaser.Scene {
             0, 30
         );
 
+        this.flower2= new Flower(
+            this,
+            borderUISize+borderPadding+ 700,
+            game.config.height - borderUISize*2,
+            'flower',
+            0, 30
+        );
+
         this.fly = new Fly(this, game.config.width, borderUISize*6 + borderPadding*8, 'fly', 0, 10).setOrigin(0,0);
         
         //initialize score
@@ -112,12 +120,14 @@ class Play extends Phaser.Scene {
 
            //added respawn timer
            this.respawn=  this.time.addEvent({delay: this.timer, callback: this.respawnflower, callbackScope: this, loop: true});
+           this.respawn=  this.time.addEvent({delay: this.timer-5000, callback: this.respawnflower2, callbackScope: this, loop: true});
     }
 
     update() {
         this.water1.tilePositionX +=4;
         this.floor.tilePositionX +=1;
         this.flower.update();
+        this.flower2.update();
         this.fly.update();
         this.frog.update();
 
@@ -127,6 +137,10 @@ class Play extends Phaser.Scene {
 
         if(this.checkCollision(this.frog, this.flower)){
             this.flower.destroy();
+        }
+
+        if(this.checkCollision(this.frog, this.flower2)){
+            this.flower2.destroy();
         }
     }
 
@@ -166,5 +180,16 @@ class Play extends Phaser.Scene {
             0, 30
         );
         console.log('spawning flower');
+    }
+
+    respawnflower2() {
+        this.flower2= new Flower(
+            this,
+            borderUISize+borderPadding+ 700,
+            game.config.height - borderUISize*2,
+            'flower',
+            0, 30
+        );
+        console.log('spawning flower2');
     }
 }
