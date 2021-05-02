@@ -6,16 +6,15 @@ class Play extends Phaser.Scene {
     preload() {
         // load images and sprites
         this.load.image('floor', './assets/Lilypads.png');
-        this.load.image('water1', './assets/water.png');
-        this.load.image('water2', './assets/water2.png');
-        this.load.image('water3', './assets/water3.png');
+        this.load.image('water1', './assets/Water.png');
+        this.load.image('water2', './assets/Water2.png');
+        this.load.image('water3', './assets/Water3.png');
         this.load.image('frog1', './assets/frog.png');
+        this.load.image('frog2', './assets/frogtongue.png');
         this.load.image('frogrun', './assets/frogrunning.png');
         this.load.image('frogjump', './assets/frogjump.png');
         this.load.image('fly', './assets/fly.png');
-        this.load.image('frog2', './assets/frogtongue.png');
         this.load.image('flower', './assets/Flower obstacle.png');
-        this.load.image('fly', './assets/fly.png');
     }
 
     create() {
