@@ -3,6 +3,7 @@ class Frog extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
+        this.sfx = scene.sound.add('jump');
         this.jumping = false;
         this.moveSpeed = 9;
     }
@@ -20,6 +21,7 @@ class Frog extends Phaser.GameObjects.Sprite {
         if(!this.jumping) {
             if(Phaser.Input.Keyboard.JustDown(keySPACE)) {
                 this.jumping = true;
+                this.sfx.play();
             }
         }
 
