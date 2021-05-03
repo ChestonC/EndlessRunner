@@ -14,7 +14,7 @@ class Play extends Phaser.Scene {
         this.load.image('frogrun', './assets/frogrunning.png');
         this.load.image('frogjump', './assets/frogjump.png');
         this.load.image('fly', './assets/fly.png');
-        this.load.image('flower', './assets/Flower obstacle2.png');
+        this.load.image('flower', './assets/flower.png');
     }
 
     create() {
@@ -119,10 +119,7 @@ class Play extends Phaser.Scene {
         }
 
         // define keys
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         this.timer= 15000;
 
