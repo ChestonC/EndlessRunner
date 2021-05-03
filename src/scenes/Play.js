@@ -161,6 +161,7 @@ class Play extends Phaser.Scene {
                 this.hunger -= 10;
                 console.log('flower1 hit');
                 this.cameras.main.shake(250, .008);
+                this.sound.play('hit');
                 }
             }
 
@@ -173,6 +174,7 @@ class Play extends Phaser.Scene {
                 this.hunger -= 10;
                 console.log('flower2 hit');
                 this.cameras.main.shake(250, .008);
+                this.sound.play('hit');
                 }
             }
             this.updateHunger()
