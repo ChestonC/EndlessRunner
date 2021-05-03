@@ -160,6 +160,7 @@ class Play extends Phaser.Scene {
                 this.flower.alpha = 0;
                 this.hunger -= 10;
                 console.log('flower1 hit');
+                this.cameras.main.shake(250, .008);
                 }
             }
 
@@ -171,6 +172,7 @@ class Play extends Phaser.Scene {
                 this.flower2.alpha = 0;
                 this.hunger -= 10;
                 console.log('flower2 hit');
+                this.cameras.main.shake(250, .008);
                 }
             }
             this.updateHunger()
@@ -208,7 +210,6 @@ class Play extends Phaser.Scene {
     }
 
     // Add respawn function for flower
-
     respawnflower() {
         this.flower = new Flower(
             this,
