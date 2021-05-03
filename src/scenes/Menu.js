@@ -31,7 +31,7 @@ class Menu extends Phaser.Scene {
 
         this.add.text(borderUISize + borderPadding + 130, borderUISize + borderPadding + 350, 'Press [SPACE] to Start', menuConfig);
 
-        this.add.text(borderUISize + borderPadding - 20, borderUISize + borderPadding + 100, 'Capture Fly to keep your hunger meter', menuConfig);
+        this.add.text(borderUISize + borderPadding - 20, borderUISize + borderPadding + 100, 'Catch flies to maintain hunger meter', menuConfig);
 
         this.add.text(borderUISize + borderPadding - 20, borderUISize + borderPadding + 150, 'Avoid hitting the flower by jumping', menuConfig);
 
