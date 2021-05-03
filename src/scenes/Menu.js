@@ -20,11 +20,15 @@ class Menu extends Phaser.Scene {
 
         // Menu TEXT
         //need more content, ex: image text color, ext. //Justin
-        this.add.text(borderUISize + borderPadding, borderUISize + borderPadding, 'Pond Rush', menuConfig);
+        this.add.text(borderUISize + borderPadding-20, borderUISize + borderPadding, 'Pond Rush', menuConfig);
 
-        this.add.text(borderUISize + borderPadding, borderUISize + borderPadding + 50, 'Press → to Start', menuConfig);
+        this.add.text(borderUISize + borderPadding+130, borderUISize + borderPadding + 350, 'Press → to Start', menuConfig);
 
+        this.add.text(borderUISize + borderPadding-20, borderUISize + borderPadding + 100, 'Capture Fly to keep your hunger meter', menuConfig);
 
+        this.add.text(borderUISize + borderPadding-20, borderUISize + borderPadding + 150, 'Avoid hitting the flower by jumping', menuConfig);
+
+        this.add.text(borderUISize + borderPadding-20, borderUISize + borderPadding + 200, 'Press W to Jump', menuConfig);
         //this.scene.start('playScene');
 
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
