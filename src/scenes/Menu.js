@@ -44,6 +44,7 @@ class Menu extends Phaser.Scene {
             game.settings = {
               highScore: 0
             }
+            this.sound.play('menu');
             this.scene.start('playScene')
         }
     }
