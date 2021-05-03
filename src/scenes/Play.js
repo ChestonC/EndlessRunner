@@ -151,17 +151,25 @@ class Play extends Phaser.Scene {
             }
 
             if(this.checkCollision(this.frog, this.flower)){
+                if(this.flower.alpha == 0){
+                    this.flower.reset();
+                } else{
                 this.flower.reset();
-                this.flower.destroy();
+                this.flower.alpha= 0;
                 this.hunger -= 10;
                 console.log('flower1 hit');
+                }
             }
 
             if(this.checkCollision(this.frog, this.flower2)){
+                if(this.flower2.alpha ==0) {
+                    this.flower2.reset();
+                } else{
                 this.flower2.reset();
-                this.flower2.destroy();
+                this.flower2.alpha =0;
                 this.hunger -= 10;
                 console.log('flower2 hit');
+                }
             }
 
             this.updateHunger()
