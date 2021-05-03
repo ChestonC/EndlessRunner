@@ -9,6 +9,7 @@ class Frog extends Phaser.GameObjects.Sprite {
 
     preload() {
         this.load.image('frogjump', './assets/frogjump.png');
+        this.load.audio('jump', './assets/jump.mp3');
     }
 
 
