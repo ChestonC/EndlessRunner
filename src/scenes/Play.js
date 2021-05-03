@@ -150,6 +150,7 @@ class Play extends Phaser.Scene {
                 this.fly.reset();
                 this.hunger += 30
                 this.flyEaten(this.fly);
+                this.sound.play('eat');
             }
 
             if(this.checkCollision(this.frog, this.flower)){
