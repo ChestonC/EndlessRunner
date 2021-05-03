@@ -3,6 +3,12 @@ class Menu extends Phaser.Scene {
         super("menuscene");
     }
 
+    preload() {
+        this.load.audio('jump', './assets/jump.mp3');
+        this.load.audio('menu', './assets/menu.mp3');
+        this.load.audio('hit', './assets/flowerhit.mp3');
+    }
+
     create() {
         // menu text config
         let menuConfig = {
