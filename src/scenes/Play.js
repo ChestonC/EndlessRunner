@@ -14,7 +14,7 @@ class Play extends Phaser.Scene {
         this.load.image('frogrun', './assets/frogrunning.png');
         this.load.image('frogjump', './assets/frogjump.png');
         this.load.image('fly', './assets/fly.png');
-        this.load.image('flower', './assets/Flower obstacle.png');
+        this.load.image('flower', './assets/Flower obstacle2.png');
     }
 
     create() {
