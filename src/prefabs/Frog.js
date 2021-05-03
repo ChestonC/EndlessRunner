@@ -6,7 +6,7 @@ class Frog extends Phaser.GameObjects.Sprite {
         
         this.jumping = false;
         this.tongue = false;
-        this.moveSpeed = 4;
+        this.moveSpeed = 9;
     }
 
     preload() {
@@ -14,7 +14,8 @@ class Frog extends Phaser.GameObjects.Sprite {
     }
 
 
-    update() {
+    update(time, delta) {
+        let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
 
         // jumping
         if(!this.jumping) {
@@ -24,13 +25,13 @@ class Frog extends Phaser.GameObjects.Sprite {
         }
 
         if(this.jumping) {
-            this.moveSpeed -= this.y/6000
-            if(this.y >= game.config.height - borderUISize*2) {
+            this.moveSpeed -= this.y/4000
+            if(this.y >= game.config.height - borderUISize*2 + 1) {
                 this.jumping = false;
-                this.moveSpeed = 4;
-                this.y = (game.config.height - borderUISize*2)+3;
+                this.moveSpeed = 9;
+                this.y = (game.config.height - borderUISize*2);
             }
-            this.y -= this.moveSpeed;
+            this.y -= this.moveSpeed * deltaMultiplier;
         }
 
         //firing tongue

@@ -8,8 +8,9 @@ class Fly extends Phaser.GameObjects.Sprite{
         this.moveSpeed= 2;
     }
 
-    update(){
-        this.x -= this.moveSpeed;
+    update(time, delta){
+        let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
+        this.x -= this.moveSpeed * deltaMultiplier;
 
         if(this.x <= 0- this.width){
             this.reset();
@@ -17,6 +18,6 @@ class Fly extends Phaser.GameObjects.Sprite{
     }
 
     reset() {
-        this.x= game.config.width;
+        this.x = game.config.width;
     }
 }

@@ -1,6 +1,7 @@
 /*
 Froggy Endless Runner
 By Cheston, Israel, Justin, and Tony
+Using Ethan Rafael's framerate decoupling
 Updated 4/24/2021
 */
 let config = {

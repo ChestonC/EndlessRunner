@@ -42,7 +42,7 @@ class Play extends Phaser.Scene {
         this.frog = new Frog(
             this,
             borderUISize+borderPadding,
-            (game.config.height - borderUISize*2)-1,
+            game.config.height - borderUISize*2,
             'frog1',
             'frog2',
         )
@@ -134,14 +134,15 @@ class Play extends Phaser.Scene {
         this.gameOver = false;
     }
 
-    update() {
+    update(time, delta) {
+        let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
         if(!this.gameOver) {
-            this.water1.tilePositionX +=4;
-            this.floor.tilePositionX +=1;
-            this.flower.update();
-            this.flower2.update();
-            this.fly.update();
-            this.frog.update();
+            this.water1.tilePositionX += 4 * deltaMultiplier;
+            this.floor.tilePositionX += 1 * deltaMultiplier;
+            this.flower.update(time, delta);
+            this.flower2.update(time, delta);
+            this.fly.update(time, delta);
+            this.frog.update(time, delta);
 
             if(this.checkCollision(this.frog, this.fly)) {
                 this.fly.reset();
@@ -153,12 +154,14 @@ class Play extends Phaser.Scene {
                 this.flower.reset();
                 this.flower.destroy();
                 this.hunger -= 10;
+                console.log('flower1 hit');
             }
 
             if(this.checkCollision(this.frog, this.flower2)){
                 this.flower2.reset();
                 this.flower2.destroy();
                 this.hunger -= 10;
+                console.log('flower2 hit');
             }
 
             this.updateHunger()
@@ -219,7 +222,7 @@ class Play extends Phaser.Scene {
 
     // update the hunger meter
     updateHunger() {
-        this.hunger -= 0.1;
+        this.hunger -= 0.05;
         if (this.hunger >= 200) {
             this.hunger = 200;
         }
