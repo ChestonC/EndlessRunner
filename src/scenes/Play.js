@@ -97,6 +97,8 @@ class Play extends Phaser.Scene {
         // Display score
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.frogScore, scoreConfig);
 
+    
+
         // Display highscore config
         let highscoreConfig = {
             fontFamily: 'Courier',
@@ -116,6 +118,10 @@ class Play extends Phaser.Scene {
         // Display high score
         //console.log(game.settings.highScore);
         this.scoreRight = this.add.text(350, borderUISize + borderPadding*2, 'High Score: ' + game.settings.highScore, highscoreConfig);
+       
+        // Game over flag
+        this.gameOver = false;
+
 
         // Update high score
         if(game.settings.highScore < this.frogScore) {
@@ -125,6 +131,8 @@ class Play extends Phaser.Scene {
 
         // Define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
 
         this.timer= 15000;
 
@@ -132,11 +140,21 @@ class Play extends Phaser.Scene {
         this.respawn = this.time.addEvent({delay: this.timer, callback: this.respawnflower, callbackScope: this, loop: true});
         this.respawn = this.time.addEvent({delay: this.timer-5000, callback: this.respawnflower2, callbackScope: this, loop: true});
 
-        // Game over flag
-        this.gameOver = false;
+
+
     }
 
     update(time, delta) {
+
+        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
+            this.scene.restart();
+        }
+        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+            this.scene.start("menuscene");
+        }
+        
+
+
         let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
         if(!this.gameOver) {
             this.water1.tilePositionX += 4 * deltaMultiplier;
