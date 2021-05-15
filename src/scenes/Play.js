@@ -15,6 +15,18 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        // Play the song
+        var music = this.sound.add('music', {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        });
+        music.play();
+
         // Add sky bg
         this.add.rectangle(0, 0, game.config.width, game.config.height, 0x00DDFF).setOrigin(0, 0);
 
