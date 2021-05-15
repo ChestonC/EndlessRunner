@@ -5,7 +5,7 @@ class Frog extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
         this.sfx = scene.sound.add('jump');
         this.jumping = false;
-        this.moveSpeed = 9;
+        this.moveSpeed = 100;
     }
 
     preload() {
@@ -16,7 +16,7 @@ class Frog extends Phaser.GameObjects.Sprite {
 
     update(time, delta) {
         let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
-
+        
         // jumping
         if(!this.jumping) {
             if(Phaser.Input.Keyboard.JustDown(keySPACE)) {
@@ -26,10 +26,10 @@ class Frog extends Phaser.GameObjects.Sprite {
         }
 
         if(this.jumping) {
-            this.moveSpeed -= this.y/3400
+            this.moveSpeed -= this.y/175
             if(this.y >= game.config.height - borderUISize*2 + 1) {
                 this.jumping = false;
-                this.moveSpeed = 9;
+                this.moveSpeed = 100;
                 this.y = game.config.height - borderUISize*2;
             }
             this.y -= this.moveSpeed * deltaMultiplier;

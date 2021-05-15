@@ -109,8 +109,6 @@ class Play extends Phaser.Scene {
         // Display score
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.frogScore, scoreConfig);
 
-    
-
         // Display highscore config
         let highscoreConfig = {
             fontFamily: 'Courier',
@@ -134,7 +132,6 @@ class Play extends Phaser.Scene {
         // Game over flag
         this.gameOver = false;
 
-
         // Update high score
         if(game.settings.highScore < this.frogScore) {
             game.settings.highScore = this.frogScore;
@@ -151,9 +148,6 @@ class Play extends Phaser.Scene {
         // Flower respawn timer
         this.respawn = this.time.addEvent({delay: this.timer, callback: this.respawnflower, callbackScope: this, loop: true});
         this.respawn = this.time.addEvent({delay: this.timer-5000, callback: this.respawnflower2, callbackScope: this, loop: true});
-
-
-
     }
 
     update(time, delta) {
@@ -165,16 +159,14 @@ class Play extends Phaser.Scene {
             this.scene.start("menuscene");
         }
         
-
-
         let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
         if(!this.gameOver) {
             this.water1.tilePositionX += 4 * deltaMultiplier;
             this.floor.tilePositionX += 1 * deltaMultiplier;
-            this.flower.update(time, delta);
-            this.flower2.update(time, delta);
-            this.fly.update(time, delta);
-            this.frog.update(time, delta);
+            this.flower.update(time, 10);
+            this.flower2.update(time, 10);
+            this.fly.update(time, 10);
+            this.frog.update(time, 1);
 
             if(this.checkCollision(this.frog, this.fly)) {
                 this.fly.reset();
