@@ -9,7 +9,6 @@ class Frog extends Phaser.GameObjects.Sprite {
     }
 
     preload() {
-        this.load.image('frogjump', './assets/frogjump.png');
         this.load.audio('jump', './assets/jump.mp3');
     }
 
@@ -26,10 +25,12 @@ class Frog extends Phaser.GameObjects.Sprite {
 
         if(this.jumping) {
             this.moveSpeed -= this.y/175
+            this.setFrame(1);
             if(this.y >= game.config.height - borderUISize*2 + 1) {
                 this.jumping = false;
                 this.moveSpeed = 100;
                 this.y = game.config.height - borderUISize*2;
+                this.setFrame(0);
             }
             this.y -= this.moveSpeed * deltaMultiplier;
         }

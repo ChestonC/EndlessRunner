@@ -9,9 +9,10 @@ class Play extends Phaser.Scene {
         this.load.image('water1', './assets/Water.png');
         this.load.image('water2', './assets/Water2.png');
         this.load.image('water3', './assets/Water3.png');
-        this.load.image('frogrun', './assets/frog.png');
         this.load.image('fly', './assets/fly.png');
         this.load.image('flower', './assets/flower.png');
+        
+        this.load.spritesheet('frog', './assets/frog.png', {frameWidth: 58, frameHeight: 40, startFrame: 0, endFrame: 1});
     }
 
     create() {
@@ -53,7 +54,7 @@ class Play extends Phaser.Scene {
             this,
             borderUISize + borderPadding,
             game.config.height - borderUISize*2,
-            'frogrun',
+            'frog'
         );
 
         // Add flower obstacle
