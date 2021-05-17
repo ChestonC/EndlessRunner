@@ -13,7 +13,6 @@ class Frog extends Phaser.GameObjects.Sprite {
         this.load.audio('jump', './assets/jump.mp3');
     }
 
-
     update(time, delta) {
         let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
         

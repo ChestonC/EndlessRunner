@@ -16,7 +16,7 @@ class Play extends Phaser.Scene {
 
     create() {
         // Play the song
-        var music = this.sound.add('music', {
+        let music = this.sound.add('music', {
             mute: false,
             volume: 1,
             rate: 1,
@@ -201,6 +201,9 @@ class Play extends Phaser.Scene {
                 }
             }
             this.updateHunger()
+        } else {
+            this.sound.stopAll();
+            this.add.text()
         }
     }
 
