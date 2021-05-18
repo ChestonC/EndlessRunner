@@ -133,11 +133,11 @@ class Play extends Phaser.Scene {
         // Game over flag
         this.gameOver = false;
 
-        // Update high score
-        if(game.settings.highScore < this.frogScore) {
-            game.settings.highScore = this.frogScore;
-            this.scoreRight.text = 'High Score: ' + game.settings.highScore;
-        }
+        // // Update high score
+        // if(game.settings.highScore < this.frogScore) {
+        //     game.settings.highScore = this.frogScore;
+        //     this.scoreRight.text = 'High Score: ' + game.settings.highScore;
+        // }
 
         // Define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -225,6 +225,12 @@ class Play extends Phaser.Scene {
             this.sound.stopAll();
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5); 
+
+            // Update high score
+        if(game.settings.highScore < this.frogScore) {
+            game.settings.highScore = this.frogScore;
+            this.scoreRight.text = 'High Score: ' + game.settings.highScore;
+        }
         }
     }
 
