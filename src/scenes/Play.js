@@ -149,9 +149,24 @@ class Play extends Phaser.Scene {
         // Flower respawn timer
         this.respawn = this.time.addEvent({delay: this.timer, callback: this.respawnflower, callbackScope: this, loop: true});
         this.respawn = this.time.addEvent({delay: this.timer-5000, callback: this.respawnflower2, callbackScope: this, loop: true});
+
+        
     }
 
     update(time, delta) {
+        
+        let scoreConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#FF4500',
+            color: '#843605',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 600
+    }
 
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.restart();
@@ -159,7 +174,10 @@ class Play extends Phaser.Scene {
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuscene");
         }
-        
+        if (this.gameOver){
+            
+        }
+
         let deltaMultiplier = (delta/16.66667);     // Ethan Rafael's framerate decoupling
         if(!this.gameOver) {
             this.water1.tilePositionX += 4 * deltaMultiplier;
@@ -202,9 +220,11 @@ class Play extends Phaser.Scene {
                 }
             }
             this.updateHunger()
-        } else {
+        } 
+        else {
             this.sound.stopAll();
-            this.add.text()
+            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5); 
         }
     }
 
@@ -269,7 +289,7 @@ class Play extends Phaser.Scene {
         }
         this.hungerMeter.width = this.hunger;
         if (this.hunger <= 0) {
-            this.gameOver = true;
+            this.gameOver = true; 
         }
     }
 }
